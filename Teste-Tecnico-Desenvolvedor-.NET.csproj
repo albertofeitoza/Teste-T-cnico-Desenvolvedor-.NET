@@ -24,8 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enum\" />
-    <Folder Include="Modelo\" />
     <Folder Include="Repositorio\" />
     <Folder Include="Servico\" />
   </ItemGroup>
