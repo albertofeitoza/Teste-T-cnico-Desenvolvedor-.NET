@@ -14,6 +14,6 @@ namespace Teste_Tecnico_Desenvolvedor_.NET.Modelo
         public DateTime DataPagamento { get; set; }
         
         [JsonIgnore]
-        public virtual Financiamentos? Financiamento { get; set; }
+        public virtual Financiamentos Financiamento { get; set; }
     }
 }

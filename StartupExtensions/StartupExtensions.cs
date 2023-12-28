@@ -1,6 +1,9 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Teste_Tecnico_Desenvolvedor_.NET.Modelo;
+using Teste_Tecnico_Desenvolvedor_.NET.Repositorio;
+using Teste_Tecnico_Desenvolvedor_.NET.Servico;
 
 namespace Teste_Tecnico_Desenvolvedor_.NET.StartupExtensions
 {
@@ -22,14 +25,12 @@ namespace Teste_Tecnico_Desenvolvedor_.NET.StartupExtensions
 
         private static void ImplementcaoRepositorios(IServiceCollection services)
         {
-
+            services.AddTransient<IRepositorio<Cliente>, Repositorio<Cliente>>();
         }
 
         private static void ImplementcaoInterfaces(IServiceCollection services)
         {
-
-
-
+            services.AddScoped<IServiceCliente, ServiceCliente>();
         }
     }
 }

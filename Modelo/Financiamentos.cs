@@ -8,11 +8,19 @@ namespace Teste_Tecnico_Desenvolvedor_.NET.Modelo
     {
         [Key]
         public int Id { get; set; }
-        public int CPF { get; set; } = 0;
+        public int ClienteId { get; set; }
+        public long CPF { get; set; } = 0;
         public TipoFinanciamento TipoFinanciamento { get; set; }
         public decimal ValorTotal { get; set; }
         public DateTime DataUltimoVencimento { get; set; }
+        
+        
+        [JsonIgnore]
+        public virtual List<Parcelas> Parcelas { get; set; }
 
-        public virtual List<Parcelas>? Parcelas { get; set; }
+        [JsonIgnore]
+        public virtual Cliente Cliente { get; set; }
+
+
     }
 }

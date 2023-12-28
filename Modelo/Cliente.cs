@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Teste_Tecnico_Desenvolvedor_.NET.Modelo
 {
@@ -7,9 +8,11 @@ namespace Teste_Tecnico_Desenvolvedor_.NET.Modelo
         [Key]
         public int Id { get; set; }
         public string Nome { get; set; } = "";
-        public int CPF { get; set; } = 0;
+        public long CPF { get; set; } = 0;
         public string UF { get; set; } = "";
-        public int Celular { get; set; } = 0;
+        public long Celular { get; set; } = 0;
+        
+        [JsonIgnore]        
         public virtual List<Financiamentos>? Financiamentos { get; set; }
     }
 }
