@@ -2,8 +2,8 @@
 {
     public class ApiResponse
     {
-        public int Code { get; set; }
-        public string Mensagem { get; set; }
-        public object data { get; set; }
+        public string Status { get; set; }
+        public decimal ValorTotalComJuros { get; set; }
+        public decimal ValorJuros { get; set; }
     }
 }
