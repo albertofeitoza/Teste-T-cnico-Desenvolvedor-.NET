@@ -20,6 +20,6 @@ SQL\ScriptCriacaoBancoDadosSql.sql
 # 3). Conceitual Sobre MicroServiços
 está no arquivo MICROSERVIÇO.docx
 
-# 4). Ao Subir a api a porta de acesso é 
+# 4). Ao Subir a api a porta de acesso é 5005
 http://localhost:5005/swagger/index.html
 
