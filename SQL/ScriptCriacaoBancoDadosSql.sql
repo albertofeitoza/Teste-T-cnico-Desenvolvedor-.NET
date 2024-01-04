@@ -110,7 +110,7 @@ SELECT
 	c.CPF
 FROM 
 	CLIENTE c
-	INNER JOIN Financiamentos 	f ON c.ClienteId = f.Id
+	INNER JOIN Financiamentos 	f ON f.ClienteId = c.Id
 	LEFT JOIN Parcelas 			p ON f.Id = p.FinanciamentoId
 WHERE c.UF = 'SP'
 	GROUP BY c.Nome, c.CPF
@@ -131,7 +131,7 @@ SELECT
 	c.CPF
 FROM 
 	CLIENTE c
-	INNER JOIN Financiamentos 		f ON c.ClienteId = f.Id
+	INNER JOIN Financiamentos 		f ON f.ClienteId = c.Id
 	INNER JOIN Parcelas 			ON  f.Id = p.FinanciamentoId
 WHERE p.DataVencimento > GETDATE() 
 	AND p.DataPagamento IS NULL
