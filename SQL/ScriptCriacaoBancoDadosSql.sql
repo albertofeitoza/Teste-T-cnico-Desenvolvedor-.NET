@@ -132,7 +132,7 @@ SELECT
 FROM 
 	CLIENTE c
 	INNER JOIN Financiamentos 		f ON f.ClienteId = c.Id
-	INNER JOIN Parcelas 			ON  f.Id = p.FinanciamentoId
+	INNER JOIN Parcelas 			p ON  f.Id = p.FinanciamentoId
 WHERE p.DataVencimento > GETDATE() 
 	AND p.DataPagamento IS NULL
 	GROUP BY c.Nome, c.CPF
