@@ -18,15 +18,18 @@ namespace Teste_Tecnico_Desenvolvedor_.NET.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ApiResponse> Post([FromBody] Emprestimo emprestimo)
+        public ActionResult Post([FromBody] Emprestimo emprestimo)
         {
             try
             {
-                logger.LogInformation("Recebendo dados de entrada");
+                logger.LogInformation("Recebendo dados de empréstimo.");
 
-                var response = serviceFinanciamento.ValidacoesEntrada(emprestimo);
+                var response = serviceFinanciamento.InclusaoEmprestimo(emprestimo);
 
-                return Ok(response);
+                if (response[0].DadosRetorno == null)
+                    return BadRequest(response);
+
+                return Ok(response[0].DadosRetorno);
             }
             catch (Exception e)
             {
