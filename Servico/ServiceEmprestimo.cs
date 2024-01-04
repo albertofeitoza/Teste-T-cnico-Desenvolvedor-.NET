@@ -73,53 +73,24 @@ namespace Teste_Tecnico_Desenvolvedor_.NET.Servico
 
         private ApiResponse CalculoJuros(Emprestimo financiamento)
         {
-
-            switch (financiamento.TipoCredito)
+            var juros = financiamento.TipoCredito switch
             {
-                case TipoCredito.CreditoDireto:
-                    return new ApiResponse
-                    {
-                        Status = "Aprovado",
-                        ValorTotalComJuros = (decimal)(financiamento.ValorCredito + (Constantes.Constantes.CreditoDireto / 100.0 * financiamento.ValorCredito)),
-                        ValorJuros = ((decimal)(Constantes.Constantes.CreditoDireto / 100.0 * financiamento.ValorCredito))
-                    };
-                    break;
-                case TipoCredito.CreditoConsignado:
-                    return new ApiResponse
-                    {
-                        Status = "Aprovado",
-                        ValorTotalComJuros = (decimal)(financiamento.ValorCredito + (Constantes.Constantes.CreditoConsignado) / 100.0 * financiamento.ValorCredito),
-                        ValorJuros = ((decimal)(Constantes.Constantes.CreditoConsignado / 100.0 * financiamento.ValorCredito))
-                    };
-                    break;
-                case TipoCredito.CreditoPessoaJuridica:
-                    return new ApiResponse
-                    {
-                        Status = "Aprovado",
-                        ValorTotalComJuros = (decimal)(financiamento.ValorCredito + (Constantes.Constantes.CreditoPessoaJuridica / 100.0 * financiamento.ValorCredito)),
-                        ValorJuros = ((decimal)(Constantes.Constantes.CreditoPessoaJuridica / 100.0 * financiamento.ValorCredito))
-                    };
-                    break;
-                case TipoCredito.CreditoPessoaFisica:
-                    return new ApiResponse
-                    {
-                        Status = "Aprovado",
-                        ValorTotalComJuros = (decimal)(financiamento.ValorCredito + (Constantes.Constantes.CreditoPessoaFisica / 100.0 * financiamento.ValorCredito)),
-                        ValorJuros = ((decimal)(Constantes.Constantes.CreditoPessoaFisica / 100.0 * financiamento.ValorCredito))
-                    };
-                    break;
-                case TipoCredito.CreditoImobiliario:
-                    return new ApiResponse
-                    {
-                        Status = "Aprovado",
-                        ValorTotalComJuros = (decimal)(financiamento.ValorCredito + (Constantes.Constantes.CreditoImobiliario / 100.0 * financiamento.ValorCredito)),
-                        ValorJuros = ((decimal)(Constantes.Constantes.CreditoImobiliario / 100.0 * financiamento.ValorCredito))
-                    };
-                    break;
-                default:
-                    return new ApiResponse();
-                    break;
-            }
+                TipoCredito.CreditoDireto => Constantes.Constantes.CreditoDireto,
+                TipoCredito.CreditoConsignado => Constantes.Constantes.CreditoConsignado,
+                TipoCredito.CreditoPessoaJuridica => Constantes.Constantes.CreditoPessoaJuridica,
+                TipoCredito.CreditoPessoaFisica => Constantes.Constantes.CreditoPessoaFisica,
+                TipoCredito.CreditoImobiliario => Constantes.Constantes.CreditoImobiliario,
+                _ => 0,
+            };
+
+            var valorJuros = (juros / 100.0) * financiamento.ValorCredito;
+
+            return new ApiResponse
+            {
+                Status = "Aprovado",
+                ValorTotalComJuros = (decimal)(financiamento.ValorCredito + valorJuros),
+                ValorJuros = (decimal)valorJuros
+            };
         }
     }
 }
